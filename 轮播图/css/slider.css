@@ -1,0 +1,21 @@
+*{ padding: 0;margin: 0; }
+.slider{width: 640px;height: 480px; overflow: hidden; position: relative;}
+/* 图片区 */
+.slider-box{width: 4480px;height: 480px;z-index: 1;margin-left: -640px;transition: all 0.2s ease-in;}
+.slider-box-img{float: left;}
+.slider-box-img img{width: 640px; height: 370px;}
+/* 箭头区 */
+.slider-arrow{z-index: 2;cursor: pointer;}
+.arrow{top: 30%; position: absolute; color: #fff; font-size: 25px; 
+	padding: 5px 14px;background-color: rgba(255,255,255,0.7);transition: all 0.5s 
+	linear;border-radius: 50%; }
+.slider-arrow-left{left: 0;}
+.slider-arrow-right{right: 0;}
+.arrow:hover{background-color: rgba(125,205,220,0.1)}
+/* 小圆点区 */
+.slider-button{position: absolute;top: 70%;z-index: 2;right: 0;}
+.slider-button span{border-radius: 50%;margin-right: 8px;padding: 0px 4px;cursor: pointer;
+ background-color: rgba(255,255,255,0.7);float: left;display: inline-block; opacity: 0.5;transition: all 0.2s 
+	linear}
+.slider-button span:hover{opacity: 1;}
+.slider-button span.on{opacity: 1;}
