@@ -1,0 +1,16 @@
+/* 
+menuBox width 和 innermenu left 要一致
+
+ */
+.menuBox{width: 160px;}
+.menu{display: flex;flex-direction: column;cursor: pointer;}
+.menu a{display: block;padding: 5px 10px;text-decoration: none;}
+.menu>li{background-color: #eee;text-align: center; transition: all .25s ease;}
+.menu>li:hover{background-color: #6e6e6e!important;}
+.menu>li:hover .innermenu{background-color: #6e6e6e!important;visibility: visible!important;opacity: 0.9;}
+
+.innermenu{visibility: hidden;position: absolute;left:160px;top:110px;
+	opacity: 0;width: 254px;height: 364px;background-color: #eee;z-index: 50;}
+.innermenu>ul>li:hover{background-color: #6e6e6e!important;}
+.innermenuUl{display: flex;flex-direction: row;flex-wrap:wrap;}
+.innermenuUl>li{background-color: #eee;transition: all .25s ease;width: 25%}

@@ -1,0 +1,10 @@
+	*{padding: 0;margin:0;list-style: none;}
+	.menuBox{width: 100px;}
+	.menu{display: flex;flex-direction: column;cursor: pointer;}
+	.innermenu{visibility: hidden;position: absolute;left:100px;top:0px;opacity: 0;width: 100px;height: 100px;background-color: #eee;}
+	.menu a{display: block;padding: 5px 10px;text-decoration: none;}
+	.menu li{background-color: #eee;text-align: center; transition: all .25s ease;}
+
+	.menu>li:hover{background-color: #6e6e6e!important;}
+	.menu>li:hover .innermenu{background-color: #6e6e6e!important;visibility: visible!important;opacity: 1;}
+	.innermenu>ul>li:hover{background-color: #6e6e6e!important;}
