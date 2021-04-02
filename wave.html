@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #6cf;
+            left: 300px;
+            top: 300px;
+        }
+        .block{
+            position: absolute;
+            top: -150px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 40%;
+            background: #fff;
+            animation: example 5s infinite linear;
+        }
+        .block2{
+            position: absolute;
+            top: -150px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 40%;
+            background: #fff;
+            opacity: .4;
+            animation: example 11s linear 3s infinite ;
+        }
+        .block3{
+            position: absolute;
+            top: -150px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 40%;
+            background: #fff;
+            opacity: .6;
+            animation: example 7s linear 3s infinite ;
+        }
+        @keyframes example {
+            0%   {transform: rotate(0);}
+            100% {transform: rotate(360deg);}
+        }
+        .canvasbox{
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas class="canvasbox" id="c" width="500" height="500"></canvas>
+    <!-- <div class="box">
+        <div class="block"></div>
+        <div class="block2"></div>
+        <div class="block3"></div>
+    </div> -->
+</body>
+<script>
+    let canvas = document.getElementById('c');
+    let ctx = canvas.getContext('2d');
+    let xOffset = 0;
+    let speed = 0.1;
+    let canvasWidth = 500;
+    let canvasHeight = 500;
+    let range = 0;
+
+    function drawSin(ctx, xOffset) {
+        const points = [];
+        const startX = 0;
+        const waveWidth = 0.02; // 波浪宽度,数越小越宽
+        const waveHeight = 10; // 波浪高度,数越大越高
+
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        for (let x = startX; x < startX + canvasWidth; x += 20 / canvasWidth) {
+            const y = waveHeight * Math.sin((startX + x) * waveWidth + xOffset);
+            points.push([x, (canvasHeight * (1-range)) + y]);
+            ctx.lineTo(x, (canvasHeight * (1-range)) + y);
+        }
+        ctx.lineTo(canvasWidth, canvasHeight);
+        ctx.lineTo(startX, canvasHeight);
+        ctx.lineTo(points[0][0], points[0][1]);
+        ctx.stroke();
+    }
+    function draw() {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawCircle(ctx);
+        // 曲线绘制
+        drawSin(ctx, xOffset);
+        xOffset += speed;
+        range += speed/100;
+        requestAnimationFrame(draw.bind(this));
+    }
+    function drawCircle(ctx) {
+        const r = canvasWidth / 2;
+        const lineWidth = 1;
+        const cR = r - (lineWidth);
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        ctx.arc(r, r, cR, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.clip();
+    }
+
+
+    draw();
+
+</script>
+</html>
